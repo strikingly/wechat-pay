@@ -9,7 +9,7 @@ module Wechatpay
         options = {
           appid: config.app_id,
           mch_id: config.mch_id,
-          nonce_str: SecureRandom.urlsafe_base64(nil, false)
+          nonce_str: Wechatpay::Utils.nonce_str
         }.merge(options)
 
         body = Wechatpay::Utils.add_sign_and_generate_xml_body(options)
@@ -24,6 +24,19 @@ module Wechatpay
         else
           nil
         end
+      end
+
+      def pay_params(prepay_id)
+        options = {
+          appId: Wechatpay::Config.app_id,
+          timeStamp: Wechatpay::Utils.timestamp,
+          nonceStr: Wechatpay::Utils.nonce_str,
+          package: "prepay_id=#{prepay_id}",
+          signType: "MD5"
+        }
+        options[:paySign] = Wechatpay::Sign.md5(options)
+        options.delete :appId
+        options
       end
     end
   end

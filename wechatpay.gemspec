@@ -7,8 +7,8 @@ Gem::Specification.new do |spec|
   spec.name          = "wechatpay"
   spec.version       = Wechatpay::VERSION
   spec.authors       = ["Junchen Xia"]
-  spec.email         = ["xjconlyme@gmail.com"]
-  spec.summary       = %q{Dealing with Wechat payment.}
+  spec.email         = ["junchen@striking.ly"]
+  spec.summary       = %q{A gem to deal with Wechat payment.}
   spec.homepage      = ""
   spec.license       = "MIT"
 

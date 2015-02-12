@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Junchen Xia"]
   spec.email         = ["junchen@striking.ly"]
   spec.summary       = %q{A gem to deal with Wechat payment.}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/strikingly/wechat-pay"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")

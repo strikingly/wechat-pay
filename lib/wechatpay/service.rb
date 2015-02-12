@@ -13,7 +13,6 @@ module Wechatpay
         }.merge(options)
 
         body = Wechatpay::Utils.add_sign_and_generate_xml_body(options)
-        warn(body)
         response = HTTParty.post(
           Wechatpay::Config::UNIFIED_ORDER_URL,
           :body => body

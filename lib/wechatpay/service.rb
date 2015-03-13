@@ -34,7 +34,8 @@ module Wechatpay
           signType: "MD5"
         }
         options[:paySign] = Wechatpay::Sign.md5(options)
-        options.delete :appId
+        # Why delete the appId here? It causes "Missing appId parameter." error.
+        # options.delete :appId
         options
       end
     end

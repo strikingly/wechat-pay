@@ -35,6 +35,8 @@ module Wechatpay
         }
         options[:paySign] = Wechatpay::Sign.md5(options)
         options.delete :appId
+        options[:timestamp] = options[:timeStamp]
+        options.delete :timeStamp
         options
       end
     end

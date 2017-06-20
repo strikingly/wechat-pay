@@ -3,6 +3,9 @@ require 'httparty'
 
 module Wechatpay
   module Service
+
+    class InvalidResponseError < StandardError; end
+
     class << self
       def unified_order(options)
         config = Wechatpay::Config
@@ -21,7 +24,7 @@ module Wechatpay
         if Wechatpay::Sign.valid?(result)
           result
         else
-          nil
+          raise InvalidResponseError.new(response.body.force_encoding('utf-8'))
         end
       end
 

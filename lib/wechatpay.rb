@@ -8,6 +8,7 @@ module Wechatpay
   class Config
 
     UNIFIED_ORDER_URL = 'https://api.mch.weixin.qq.com/pay/unifiedorder'
+    REFUND_ORDER_URL = 'https://api.mch.weixin.qq.com/secapi/pay/refund'
 
     class << self
       # app_id: 公众账号id, mch_id: 商户号, payment_key: 商户支付秘钥

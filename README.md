@@ -49,6 +49,19 @@ response = Wechatpay::Service.unified_order(options)
 prepay_id = response["prepay_id"]
 ```
 
+### Refund/退款
+```ruby
+options = {
+  out_trade_no: '20150101030320204',
+  out_refund_no: '334443222222222',
+  total_fee: 10000,
+  refund_fee: 10000,
+  refund_fee_type: 'CNY'
+}
+Wechatpay::Service.refund(options, cert, cert_pwd)
+
+```
+
 ### Generate payment params
 ```ruby
 params = Wechatpay::Service.pay_params(prepay_id)

@@ -40,6 +40,29 @@ module Wechatpay
         options.delete :appId
         options
       end
+
+      def refund(options, cert, cert_pwd)
+        config = Wechatpay::Config
+        options = {
+          appid: config.app_id,
+          mch_id: config.mch_id,
+          nonce_str: Wechatpay::Utils.nonce_str
+        }.merge(options)
+
+        body = Wechatpay::Utils.add_sign_and_generate_xml_body(options)
+        response = HTTParty.post(
+          Wechatpay::Config::REFUND_ORDER_URL,
+          body: body,
+          p12: cert,
+          p12_password: cert_pwd
+        )
+        result = Hash.from_xml(response.body)["xml"]
+        if Wechatpay::Sign.valid?(result)
+          result
+        else
+          raise InvalidResponseError.new(response.body.force_encoding('utf-8'))
+        end   
+      end
     end
   end
 end

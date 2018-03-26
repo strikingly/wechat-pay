@@ -27,4 +27,10 @@ describe Wechatpay::Utils do
     end
   end
 
+  describe 'timestamp' do
+    it 'should be an integer in string format' do
+      expect(utils.timestamp).to be_kind_of(String)
+      expect(utils.timestamp).to match(/^\d+$/)
+    end
+  end
 end

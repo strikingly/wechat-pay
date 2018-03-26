@@ -42,7 +42,8 @@ module Wechatpay
       end
 
       def timestamp
-        Time.now.to_i
+        # Need to convert timestamp from integer to string. See http://blog.csdn.net/chenyoper/article/details/42496245
+        Time.now.to_i.to_s
       end
 
       def nonce_str

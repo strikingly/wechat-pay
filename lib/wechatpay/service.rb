@@ -18,6 +18,7 @@ module Wechatpay
         body = Wechatpay::Utils.add_sign_and_generate_xml_body(options)
         response = HTTParty.post(
           Wechatpay::Config::UNIFIED_ORDER_URL,
+          :headers => { "Content-Type" => 'xml'},
           :body => body
         )
         result = Hash.from_xml(response.body)["xml"]
